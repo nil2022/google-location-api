@@ -1,5 +1,7 @@
 // backend/rateLimiter.js
 
+import chalk from "chalk";
+
 const config = {
     ipLimit: {
         requests: parseInt(process.env.RATE_LIMIT_IP_REQUESTS, 10) || 10,
@@ -86,11 +88,13 @@ const rateLimiter = (req, res, next) => {
     // 4. Check Per-IP Limit
     if (ipMinuteRequests.length >= config.ipLimit.requests) {
         res.set('X-RateLimit-Remaining', 0); // Ensure remaining is 0 on the error response
+        console.log(chalk.red(`IP limit exceeded for IP ${ip}`));
         return res.status(429).json({ error: "Too many requests from this IP. Try again in a minute." });
     }
 
     // 5. Check Burst Limit
     if (ipBurstRequests.length >= config.burstLimit.requests) {
+        console.log(chalk.yellow(`Burst limit exceeded for IP ${ip}`));
         return res.status(429).json({ error: "Too many requests too quickly. Please slow down." });
     }
     // --- END OF MODIFICATION ---
