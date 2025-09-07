@@ -157,7 +157,3 @@ The rate limiter can be fully configured from the `backend/.env` file.
 | `RATE_LIMIT_BURST_WINDOW_MS`| `10000`   | Time window for burst protection in milliseconds (10 seconds).  |
 | `BLACKLIST_HOURLY_THRESHOLD`| `50`      | Number of requests from an IP in an hour to trigger a blacklist.|
 | `BLACKLIST_DURATION_MS`    | `3600000` | How long an IP remains blacklisted in milliseconds (1 hour).    |
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
