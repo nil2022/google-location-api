@@ -12,5 +12,5 @@ backend/dist
 # Frontend
 frontend/node_modules
 frontend/.env
-frontend/dist
+frontend/public
 frontend/.vite
